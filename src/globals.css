@@ -1,0 +1,58 @@
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Roboto:wght@100;300;400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    /* font-family: "Poppins", sans-serif; */
+    background: #fcfcfc;
+  
+  }
+  
+  
+
+  
+  img,
+  picture,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+  
+  .filter-brightness-invert {
+    filter: brightness(0) invert(.5);
+  }
+
+  .filter-yellow {
+    filter: invert(95%) sepia(25%) saturate(7484%) hue-rotate(324deg) brightness(95%) contrast(115%);
+  }
+
+  .filter-teal {
+    filter: invert(58%) sepia(86%) saturate(342%) hue-rotate(113deg) brightness(88%) contrast(91%);
+  }
+  
+  .custom-paragraph {
+    color: rgb(119, 119, 119);
+    font-size: 16px;
+  }
+
+  .custom-th {
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 500;
+  }
