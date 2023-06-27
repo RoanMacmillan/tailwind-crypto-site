@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import star from "../../assets/images/icons/star.svg";
+import { Link } from "react-router-dom";
 
 const CoinList = ({ searchTerm }) => {
   const [coins, setCoins] = useState([]);
+  const [sortField, setSortField] = useState("");
+  const [sortDirection, setSortDirection] = useState("asc");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,25 +24,73 @@ const CoinList = ({ searchTerm }) => {
     fetchData();
   }, []);
 
+  const handleSort = (field) => {
+    setSortField(field);
+    setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+  };
+
   return (
     <div className="border-t border-l border-r rounded-lg mt-10 mb-10 bg-white overflow-x-auto lg:mt-20">
       <table className=" w-full">
         <thead>
           <tr className="text-left custom-th border-b">
-            <th className=" p-4 pl-11 ">#</th>
-            <th className=" px-4 ">Name</th>
-            <th className=" px-4 ">Price</th>
-            <th className=" px-4 ">1h</th>
-            <th className=" px-4 ">24h</th>
-            <th className=" px-4 ">7d</th>
-            <th className=" px-4 ">Market Cap</th>
+            <th
+              className="p-4 pl-11 cursor-pointer"
+              onClick={() => handleSort("market_cap_rank")}
+            >
+              #
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() => handleSort("name")}
+            >
+              Name
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() => handleSort("current_price")}
+            >
+              Price
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() =>
+                handleSort("price_change_percentage_1h_in_currency")
+              }
+            >
+              1h
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() => handleSort("price_change_percentage_24h")}
+            >
+              24h
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() =>
+                handleSort("price_change_percentage_7d_in_currency")
+              }
+            >
+              7d
+            </th>
+            <th
+              className="px-4 cursor-pointer"
+              onClick={() => handleSort("market_cap")}
+            >
+              Market Cap
+            </th>
 
             {/* <th className=" px-4 pt-4 pb-4 ">Trade</th> */}
           </tr>
         </thead>
         <tbody>
           {coins
-
+            .sort((a, b) => {
+              return sortDirection === "asc"
+                ? a[sortField] - b[sortField]
+                : b[sortField] - a[sortField];
+            })
             .filter(
               (coin) =>
                 coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -67,7 +118,9 @@ const CoinList = ({ searchTerm }) => {
                     alt={coin.name}
                     className="w-6 h-6 mr-2"
                   />
+                  <Link to={`/coins/${coin.id}`}>
                   <span className="font-bold">{coin.name}</span>
+                  </Link>
                   <span className="uppercase text-gray-400 ml-1">
                     {coin.symbol}
                   </span>

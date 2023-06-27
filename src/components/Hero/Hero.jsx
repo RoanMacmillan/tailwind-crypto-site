@@ -21,31 +21,22 @@ const Hero = ({ setSearchTerm }) => {
         Track & Compare the hottest Cryptocurrencies
       </h1>
       <p className="text-center mt-4 custom-paragraph max-w-md mx-auto lg:mt-6">
-        Coinmac provides a fundamental analysis of the crypto market. Explore varius statistics of your favourite coins here!
+        Coinmac provides a fundamental analysis of the crypto market. Explore
+        varius statistics of your favourite coins here!
       </p>
       <div className="mt-4 flex justify-center relative max-w-xl mx-auto lg:mt-6 ">
-
-      <img
-            className="w-5 absolute left-3 top-3 filter-brightness-invert"
-            src={Search}
-            alt="Search icon"
-          ></img>
+        <img
+          className="w-5 absolute left-3 top-3 filter-brightness-invert"
+          src={Search}
+          alt="Search icon"
+        ></img>
         <input
-        
           type="text"
           placeholder="Search"
           className="border border-gray-300 rounded-md pl-10 px-4 py-2 w-full"
           value={inputValue}
           onChange={handleSearch}
         />
-
-        {/* <button className="absolute top-0 right-0 h-full px-4 py-2 bg-custom-teal rounded-r">
-          <img
-            className="w-5 filter-brightness-invert"
-            src={Search}
-            alt="Search icon"
-          ></img>
-        </button> */}
       </div>
     </div>
   );
